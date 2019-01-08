@@ -1,4 +1,4 @@
-﻿using Kumu.Trader.Server.Communication;
+﻿using KumuTraderServer.Communication;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Kumu.Trader.Server
+namespace KumuTraderServer
 {
     public partial class FrmLogin : Form
     {

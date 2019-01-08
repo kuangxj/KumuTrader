@@ -3,7 +3,7 @@ using DotNetty.Transport.Channels;
 using System;
 using System.Text;
 
-namespace Kumu.Trader.Server.Communication
+namespace KumuTraderServer.Communication
 {
     public class WorkServerHandler : ChannelHandlerAdapter
     {

@@ -1,4 +1,4 @@
-﻿namespace Kumu.Trader.Server
+﻿namespace KumuTraderServer
 {
     partial class FrmLogin
     {

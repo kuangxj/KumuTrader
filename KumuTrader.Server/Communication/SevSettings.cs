@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kumu.Trader.Client.Communication
+namespace KumuTraderServer.Communication
 {
-    class ClientSettings
+    public class SevSettings
     {
         public static bool IsSsl { get; set; }
         public static int Port { get; set; }
 
-        public static long Host { get; set; }
-        public static int Size { get; set; }
-        
     }
 }

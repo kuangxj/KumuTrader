@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kumu.Trader.Client.Communication
+namespace KumuTraderClient.Communication
 {
     public class WorkClientHandler: ChannelHandlerAdapter
     {
