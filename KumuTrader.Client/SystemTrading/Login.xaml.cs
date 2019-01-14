@@ -13,7 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Kumu
+namespace KumuTraderClient
 {
     /// <summary>
     /// Login.xaml 的交互逻辑

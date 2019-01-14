@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Kumu.App</StartupObject>
+    <StartupObject>KumuTraderClient.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -55,19 +55,39 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="XAPI_CSharp">
+      <HintPath>..\..\XAPI2\languages\CSharp\XAPI_CSharp\bin\Release\XAPI_CSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AbstractMessageRegister.cs" />
     <Compile Include="Communication\ClientHelper.cs" />
     <Compile Include="Communication\ClientSettings.cs" />
-    <Compile Include="Login.xaml.cs">
+    <Compile Include="DispatcherHelper.cs" />
+    <Compile Include="IMessageManager.cs" />
+    <Compile Include="IMessageRegister.cs" />
+    <Compile Include="MessageManager.cs" />
+    <Compile Include="ModelBase.cs" />
+    <Compile Include="MsgActionInfo.cs" />
+    <Compile Include="MsgActionInfoT.cs" />
+    <Compile Include="MsgArgs.cs" />
+    <Compile Include="MyCommand.cs" />
+    <Compile Include="MyCommandT.cs" />
+    <Compile Include="NotifyObject.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="SystemTrading\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Communication\WorkClientHandler.cs" />
-    <Page Include="Login.xaml">
+    <Compile Include="SystemTrading\LoginViewModel.cs" />
+    <Compile Include="ViewModelBase.cs" />
+    <Compile Include="ViewModelInfo.cs" />
+    <Compile Include="ViewModelManager.cs" />
+    <Page Include="SystemTrading\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,10 +134,6 @@
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{a4a5ed1c-16ac-4324-8858-e99d892a6360}</Project>
       <Name>Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XAPI_CSharp\XAPI_CSharp.csproj">
-      <Project>{6aa065f5-2e4a-4112-a3ae-1f75cae42ffb}</Project>
-      <Name>XAPI_CSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -312,6 +328,13 @@
     <PackageReference Include="System.Xml.XDocument">
       <Version>4.3.0</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataManagement\" />
+    <Folder Include="ExtensionModule\" />
+    <Folder Include="StrategyResearch\" />
+    <Folder Include="SystemManagement\" />
+    <Folder Include="TechnicalAnalysis\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
