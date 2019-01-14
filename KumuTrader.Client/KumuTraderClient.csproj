@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5B5365D0-CA68-457E-A306-05B75C799CCE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Kumu.Trader.Client</RootNamespace>
-    <AssemblyName>Kumu.Trader.Client</AssemblyName>
+    <RootNamespace>KumuTraderClient</RootNamespace>
+    <AssemblyName>KumuTraderClient</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,8 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
+    <StartupObject>Kumu.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,9 +55,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="XAPI_CSharp">
-      <HintPath>..\..\XAPI2\languages\CSharp\XAPI_CSharp\bin\Release\XAPI_CSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -118,6 +114,10 @@
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{a4a5ed1c-16ac-4324-8858-e99d892a6360}</Project>
       <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XAPI_CSharp\XAPI_CSharp.csproj">
+      <Project>{6aa065f5-2e4a-4112-a3ae-1f75cae42ffb}</Project>
+      <Name>XAPI_CSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
