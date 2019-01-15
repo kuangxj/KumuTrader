@@ -10,53 +10,114 @@ namespace KumuTraderClient
 {
     public class RelayCommand : ICommand
     {
-        #region 字段
-        readonly Func<Boolean> _canExecute;
-        readonly Action _execute;
-        #endregion
+        private readonly Action _execute;
 
-        #region 构造函数
+        private readonly Func<bool> _canExecute;
+
         public RelayCommand(Action execute)
             : this(execute, null)
         {
         }
 
-        public RelayCommand(Action execute, Func<Boolean> canExecute)
+        public RelayCommand(Action execute, Func<bool> canExecute)
+        {
+            if (execute == null)
+            {
+                throw new ArgumentNullException("execute");
+            }
+
+            _execute = execute;
+
+            if (canExecute != null)
+            {
+                _canExecute = canExecute;
+            }
+        }
+
+        public event EventHandler CanExecuteChanged;
+
+        public void RaiseCanExecuteChanged()
+        {
+          
+            if (CanExecuteChanged != null)
+            {
+                CanExecuteChanged(this, EventArgs.Empty);
+            }
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return _canExecute == null || _canExecute();
+        }
+
+        public virtual void Execute(object parameter)
+        {
+            if (CanExecute(parameter) && _execute != null)
+            {
+                _execute();
+            }
+        }
+    }
+
+    public class RelayCommand<T> : ICommand
+    {
+        public RelayCommand(Action<T> execute)
+                    : this(execute, null)
+        {
+        }
+
+        public RelayCommand(Action<T> execute, Predicate<T> canExecute)
         {
             if (execute == null)
                 throw new ArgumentNullException("execute");
+
             _execute = execute;
             _canExecute = canExecute;
         }
-        #endregion
-
-        #region ICommand的成员
-        public event EventHandler CanExecuteChanged
-        {
-            add
-            {
-
-                if (_canExecute != null)
-                    CommandManager.RequerySuggested += value;
-            }
-            remove
-            {
-
-                if (_canExecute != null)
-                    CommandManager.RequerySuggested -= value;
-            }
-        }
 
         [DebuggerStepThrough]
-        public Boolean CanExecute(Object parameter)
+        public bool CanExecute(object parameter)
         {
-            return _canExecute == null ? true : _canExecute();
+            return _canExecute == null ? true : _canExecute((T)parameter);
+        }
+        public event EventHandler CanExecuteChanged
+        {
+            add { }
+            remove { }
+            //add
+            //{
+            //    if (_canExecute != null)
+            //        CommandManager.RequerySuggested += value;
+            //}
+            //remove
+            //{
+            //    if (_canExecute != null)
+            //        CommandManager.RequerySuggested -= value;
+            //}
         }
 
-        public void Execute(Object parameter)
+        public void Execute(object parameter)
         {
-            _execute();
+            _execute((T)parameter);
         }
-        #endregion
+
+        readonly Action<T> _execute = null;
+        readonly Predicate<T> _canExecute = null;
+
+        bool ICommand.CanExecute(object parameter)
+        {
+            throw new NotImplementedException();
+        }
+
+        event EventHandler ICommand.CanExecuteChanged
+        {
+            add { throw new NotImplementedException(); }
+            remove { throw new NotImplementedException(); }
+        }
+
+        void ICommand.Execute(object parameter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

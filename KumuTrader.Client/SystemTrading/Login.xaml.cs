@@ -13,7 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace KumuTraderClient
+namespace KumuTraderClient.SystemTrading
 {
     /// <summary>
     /// Login.xaml 的交互逻辑
@@ -23,6 +23,8 @@ namespace KumuTraderClient
         public Login()
         {
             InitializeComponent();
+
+            DataContext = new LoginViewModel();
         }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -52,7 +54,7 @@ namespace KumuTraderClient
             }
             else
             {
-                Uri ur = new Uri("images/mini1.png", UriKind.Relative);
+                Uri ur = new Uri("/images/mini1.png", UriKind.Relative);
                 BitmapImage bp = new BitmapImage(ur);
                 ig.Source = bp;
             }
@@ -63,13 +65,13 @@ namespace KumuTraderClient
             Image ig = sender as Image;
             if (ig.Tag.ToString() == "close")
             {
-                Uri ur = new Uri("images/close0.png", UriKind.Relative);
+                Uri ur = new Uri("/images/close0.png", UriKind.Relative);
                 BitmapImage bp = new BitmapImage(ur);
                 ig.Source = bp;
             }
             else
             {
-                Uri ur = new Uri("images/mini0.png", UriKind.Relative);
+                Uri ur = new Uri("/images/mini0.png", UriKind.Relative);
                 BitmapImage bp = new BitmapImage(ur);
                 ig.Source = bp;
             }

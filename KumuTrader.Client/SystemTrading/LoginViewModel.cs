@@ -5,65 +5,77 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using XAPI;
 
 namespace KumuTraderClient.SystemTrading
 {
-    public class LoginViewModel : INotifyPropertyChanged
+    public class LoginViewModel : ViewModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void Notify(string name)
+        string _LoginUser;
+        public string LoginUser
         {
-            if (PropertyChanged == null)
+            get
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
+                return _LoginUser;
             }
-
-        }
-        private string _LoginName = "";
-
-        public string LoginName
-        {
-            get { return _LoginName; }
             set
             {
-                _LoginName = value;
-                Notify("Name");
+                if (_LoginUser != value)
+                {
+                    _LoginUser = value;
+                    OnPropertyChanged();
+                }
             }
         }
-
-        private string _PasswordInfo = "";
-
-        public string PasswordInfo
+        string _LoginPwd;
+        public string LoginPwd
         {
-            get { return _LoginName; }
+            get
+            {
+                return _LoginPwd;
+            }
             set
             {
-                _PasswordInfo = value;
-                Notify("Name");
+                if (_LoginPwd != value)
+                {
+                    _LoginPwd = value;
+                    OnPropertyChanged();
+                }
             }
         }
-        void UpdateArtistNameExecute()
-        {
-            this._LoginName = "中孝介";
-        }
 
-        bool CanUpdateArtistNameExecute()
+        ICommand _LoginCmd;
+        public ICommand LoginCmd
+        {
+            get
+            {
+                return _LoginCmd ?? (_LoginCmd = new RelayCommand(
+                    () => OnLoginChanged(),
+                    () => CanExecute()
+                ));
+            }
+
+        }
+        public ICommand CannelCmd { get; set; }
+
+        void OnLoginChanged()
+        {
+            //与服务端通讯登录完成后，加载一系列数据
+            throw new Exception();
+
+            //加载权限
+
+            //加载码表
+
+            //行情接口初始化
+            XAPI.
+            //登录行情
+
+            //订阅行情
+        }
+        bool CanExecute()
         {
             return true;
-        }
-        public ICommand UserLoginCommand { get { return new RelayCommand(UpdateArtistNameExecute, CanUpdateArtistNameExecute); } }
-        public ICommand NameChanaged { get { return new RelayCommand(NameChanagedMethod); } }
-
-        public ICommand PasswordChanged { get { return new RelayCommand(PasswordChangedMethod); } }
-
-        private void NameChanagedMethod()
-        {
-            string na = _LoginName;
-        }
-        private void PasswordChangedMethod()
-        {
-            string na = _PasswordInfo;
         }
     }
 }

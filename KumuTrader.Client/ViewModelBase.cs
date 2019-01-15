@@ -1,40 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Threading;
 
 namespace KumuTraderClient
 {
-  public  class ViewModelBase: NotifyObject
+    public class ViewModelBase : INotifyPropertyChanged
     {
-        private IMessageManager _msgManager;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public IMessageManager MsgManager
+        public virtual void OnPropertyChanged([CallerMemberName] String propertyName = null)
         {
-            get
-            {
-                if (_msgManager == null)
-                    _msgManager = MessageManager.Default;
-                return _msgManager;
-            }
-            set { _msgManager = value; }
-        }
-
-        private Dispatcher _UIDispatcher;
-
-        public Dispatcher UIDispatcher
-        {
-            get
-            {
-                if (_UIDispatcher == null)
-                {
-                    _UIDispatcher = DispatcherHelper.UIDispatcher;
-                }
-                return _UIDispatcher;
-            }
-            set { _UIDispatcher = value; }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

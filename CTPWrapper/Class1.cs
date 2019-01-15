@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KumuTraderClient
+namespace CTPWrapper
 {
-    public class ModelBase
+    public class Class1
     {
     }
 }
