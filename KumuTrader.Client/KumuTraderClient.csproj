@@ -40,10 +40,12 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,9 +57,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="XAPI_CSharp">
-      <HintPath>..\..\XAPI2\languages\CSharp\XAPI_CSharp\bin\Release\XAPI_CSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -105,6 +104,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="XAPI\x86\Kingstar\KSInterB2C.lkc" />
+    <None Include="XAPI\x86\Tdx\login.ini" />
+    <None Include="XAPI\x86\Tdx\TdxApi.lib" />
+    <None Include="XAPI\x86\Tdx\客户定制版通达信接口封装_使用手册.doc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -113,6 +116,10 @@
     <ProjectReference Include="..\Shared\Shared.csproj">
       <Project>{a4a5ed1c-16ac-4324-8858-e99d892a6360}</Project>
       <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XAPI_CSharp\XAPI_CSharp.csproj">
+      <Project>{6aa065f5-2e4a-4112-a3ae-1f75cae42ffb}</Project>
+      <Name>XAPI_CSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -314,6 +321,42 @@
     <Folder Include="StrategyResearch\" />
     <Folder Include="SystemManagement\" />
     <Folder Include="TechnicalAnalysis\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XAPI\x86\CTP\CTP_Quote_x86.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XAPI\x86\CTP\CTP_Trade_x86.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XAPI\x86\CTP\thostmduserapi.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XAPI\x86\CTP\thosttraderapi.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="XAPI\x86\Kingstar\Kingstar_Quote_x86.dll" />
+    <Content Include="XAPI\x86\Kingstar\Kingstar_Trade_x86.dll" />
+    <Content Include="XAPI\x86\Kingstar\KSMarketDataAPI.dll" />
+    <Content Include="XAPI\x86\Kingstar\ksPortalAPI.dll" />
+    <Content Include="XAPI\x86\Kingstar\KSTradeAPI.dll" />
+    <Content Include="XAPI\x86\Kingstar\lkcdll.dll" />
+    <Content Include="XAPI\x86\Kingstar\SSPXEncode.dll" />
+    <Content Include="XAPI\x86\LTS_v2\LTS_Query_v2_x86.dll" />
+    <Content Include="XAPI\x86\LTS_v2\LTS_Quote_v2_x86.dll" />
+    <Content Include="XAPI\x86\LTS_v2\LTS_Trade_v2_x86.dll" />
+    <Content Include="XAPI\x86\LTS_v2\securitymduserapi.dll" />
+    <Content Include="XAPI\x86\LTS_v2\securityqueryapi.dll" />
+    <Content Include="XAPI\x86\LTS_v2\securitytraderapi.dll" />
+    <Content Include="XAPI\x86\Tdx\EasyHook32.dll" />
+    <Content Include="XAPI\x86\Tdx\lua53.dll" />
+    <Content Include="XAPI\x86\Tdx\TdxApi.dll" />
+    <Content Include="XAPI\x86\Tdx\TdxApiDemo.exe" />
+    <Content Include="XAPI\x86\Tdx\TdxInjector.exe" />
+    <Content Include="XAPI\x86\Tdx\Tdx_Trade_x86.dll" />
+    <Content Include="XAPI\x86\TongShi\TongShi_Quote_x86.dll" />
+    <Content Include="XAPI\x86\Wind\WAPIWrapperCpp.dll" />
+    <Content Include="XAPI\x86\Wind\Wind_Quote_x86.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
